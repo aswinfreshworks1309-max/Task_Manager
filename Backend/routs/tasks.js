@@ -16,6 +16,16 @@ router.get("/", async (req, res) => {
   }
 });
 
+
+
+export default function handler(request, response) {
+  if (request.method === 'GET') {
+    response.status(200).json({ tasks: [] });
+  } else if (request.method === 'POST') {
+    response.status(201).json({ task: request.body });
+  }
+}
+
 // Create a new task
 
 router.post("/post",async (req,res)=>{
