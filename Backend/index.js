@@ -14,7 +14,7 @@ app.get("/", (req, res) => {
 app.use("/tasks", taskRoutes);
 
 const PORT = process.env.PORT || 3000;
-if (process.env.NODE_ENV !== "production") {
+if (require.main === module) {
   app.listen(PORT, () => {
     console.log(`Backend running on port ${PORT}`);
   });
