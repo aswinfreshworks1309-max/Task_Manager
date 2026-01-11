@@ -6,16 +6,15 @@ const pool = require('../db');
 
 //get all tasks
 
-router.get('/',async (req,res)=>{
-    try {
-        const result = await pool.query("SELECT * FROM task ORDER BY created_at DESC");
-        res.json(result.rows);
-    } catch(err) {
-        console.error('Error fetching tasks:', err);
-        res.status(500).json({error: 'Failed to fetch tasks'});
-    }
-})
-
+router.get("/", async (req, res) => {
+  try {
+    const result = await pool.query("SELECT * FROM task");
+    res.json(result.rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Database error" });
+  }
+});
 
 // Create a new task
 

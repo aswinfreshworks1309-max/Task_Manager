@@ -1,14 +1,23 @@
-const express = require('express');
-const cors = require('cors');
-const taskRoutes = require('./routs/tasks');
-
+const express = require("express");
+const cors = require("cors");
+const taskRoutes = require("./routs/tasks");
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 
-app.use("/tasks",taskRoutes);
-app.listen(3000,()=>{
-    console.log("Backend running on port 3000");
+app.get("/", (req, res) => {
+  res.send("Task Manager API is running...");
 });
+
+app.use("/tasks", taskRoutes);
+
+const PORT = process.env.PORT || 3000;
+if (process.env.NODE_ENV !== "production") {
+  app.listen(PORT, () => {
+    console.log(`Backend running on port ${PORT}`);
+  });
+}
+
+module.exports = app;

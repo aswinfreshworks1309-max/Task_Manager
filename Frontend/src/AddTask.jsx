@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import API_BASE_URL from './config'
 
 const AddTask = ({ onTaskAdded }) => {
 
@@ -8,7 +9,7 @@ const AddTask = ({ onTaskAdded }) => {
             return;
         }
         try {
-            const response = await fetch("http://localhost:3000/tasks/post", {
+            const response = await fetch(`${API_BASE_URL}/tasks/post`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

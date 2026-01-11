@@ -1,9 +1,10 @@
+import API_BASE_URL from './config'
 
 const TaskList = ({ tasks, onTaskDeleted }) => {
 
     const deleteTask = async (id) => {
         try {
-            const response = await fetch(`http://localhost:3000/tasks/delete/task/${id}`, {
+            const response = await fetch(`${API_BASE_URL}/tasks/delete/task/${id}`, {
                 method: 'DELETE'
             });
             if (response.ok) {

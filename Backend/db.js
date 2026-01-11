@@ -1,11 +1,10 @@
-const {Pool} = require("pg");
+const { Pool } = require("pg");
 
 const pool = new Pool({
-    user:"postgres",
-    host:"localhost",
-    database:"task_db",
-    password:"AcademyRootPassword",
-    port:5432
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false,
+  },
 });
 
 // Create table if it doesn't exist
@@ -27,5 +26,3 @@ const initializeDatabase = async () => {
 initializeDatabase();
 
 module.exports = pool;
-
-
